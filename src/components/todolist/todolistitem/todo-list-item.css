@@ -1,0 +1,138 @@
+@import url('../fonts/fonts.css');
+
+* {
+    font-family: 'Google Sans'
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.important {
+    /* animation: linear 10s infinite alternate stair; */
+    box-shadow: 0 0 10px #FAC863;
+}
+
+
+@keyframes stair {
+    from {
+        transform: rotate(0deg);
+    }
+    
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(90deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+li {
+    list-style-type: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 95%;
+    margin: 0 auto;
+}
+li div {
+    margin: 0;
+    display: flex;
+}
+
+li div div {
+    line-height: 36px;
+}
+
+li div div:nth-child(1) {
+    border: solid #79B6F2 3px;
+    border-radius: 13px;
+    width: 86%;
+    height: 36px;
+    float: left;
+    padding-left: 10px;
+}
+
+li div div:nth-child(2) {
+    width: 10%;
+    height: 40px;
+    float: right;
+}
+
+.margin {
+    height: 42px;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #102127;
+    font-weight: 600;
+    border: none;
+    float: left;
+}
+
+button:focus {
+    outline: none;
+}
+
+@keyframes triaska {
+    from {
+        transform: rotate(0deg);
+    }
+    
+    25% {
+        transform: rotate(15deg);
+    }
+
+    75% {
+        transform: rotate(-15deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+li div .buttonsdiv button:nth-child(2):hover {
+    box-shadow: 0 0 10px #FAC863;
+}
+
+
+li div .buttonsdiv button:nth-child(1):hover object{
+    animation: linear 1s infinite alternate triaska;
+}
+
+.buttonsdiv {
+    display: flex;
+    margin-left: 3px;
+}
+
+li div div span {
+    width: 5px;
+}
+
+.buttonsdiv button {
+    margin: 0;
+    background-color: #282C34;
+}
+
+li div .buttonsdiv button object {
+    float: right;
+    height: 26px;
+}
+li div .buttonsdiv button:nth-child(1){
+    border: solid #FC929E 3px;
+    transition: 2s;
+
+}
+li div .buttonsdiv button:nth-child(2){
+    border: solid #FAC863 3px;
+    transition: .3s;
+}

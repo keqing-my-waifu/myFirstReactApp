@@ -1,0 +1,45 @@
+div {
+    width: 95%;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    margin-top: 10px;
+}
+
+input {
+    width: 98%;
+    height: 30px;
+    font-size: 20px;
+    background-color: #282C34;
+    border: solid #79B6F2 3px;
+    border-radius: 13px;
+    padding-left: 10px;
+}
+input:nth-child(2) {
+    width: 88%;
+    margin-top: 10px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 7px #79B6F2;
+}
+
+.apply{
+    margin-left: 5px;
+    float: right;
+    height: 42px;
+    margin-right: 0;
+    color: black;
+    font-weight: 600;
+    border: none;
+    border-radius: 50%;
+    background-color: #282C34;
+    border: solid #61DAFB 3px;
+}
+.apply img {
+    margin-top: 3px;
+    height: 26px;
+}
