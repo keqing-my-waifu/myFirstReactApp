@@ -6,67 +6,67 @@ import Input from "./components/inputs/input";
 import Todolist from "./components/todolist/todo-list";
 
 export default class App extends Component {
+  componentDidMount(){
+    let todos = JSON.parse(localStorage.getItem('todo'))
+    if(todos == null) {
+      todos = []
+      this.setState({todoList: todos, todoListcopy: ''})
+    }
+    else {
+      this.setState({todoList: todos.result, todoListcopy: ''})
+    }
+  }
   state = {
-    todoList: [
-      // { label: "Выпить кофе", important: false, id:1},
-      { label: "Выкинуть мусор", important: true, id:1},
-      { label: "Создать новый амазон", important: false, id:2},
-      { label: "Создать новый фейсбук", important: false, id:3}
-    ],
+    todoList: [],
     todoListcopy: ''
   }
   DeletedFun = (id) => {
     this.setState(({todoList}) => {
       const idel = todoList.findIndex((el) => el.id === id)//ищется el.id который равен id например эта функция вернет 3 если id = 4 
       const before = todoList.slice(0, idel);
-      console.log(before);
       const after = todoList.slice(idel+1);
       const newarr = [...before, ...after];
+      localStorage.setItem('todo', JSON.stringify({result:newarr}))
       return {
         todoList: newarr
       }
     })
   } 
   onAddNewItem = (text) => {
-    this.setState(({todoList}) => {
-      let newid;
-      // for(let i = 1; i<todoList.length; i++){
-      //   if(todoList[i].id > todoList[i-1].id){
-      //     newid = todoList[i].id + 1;
-      //   } else if(todoList[i] < todoList[i-1].id) {
-      //     newid = todoList[i-1].id+2;
-      //   }
-      // }
-      if(todoList.length === 0){
-        newid = 1;
-      } else if(todoList.length === 1){
-        newid = 2
-      } else {
-        newid = todoList.length+1;
-      }
-      const el = {
-        label: text,
-        important: false,
-        id: newid
-      }
-      console.log(el);  
-      const important = [];
-      const notimportant =[];
-      
-      for (let i = 0; i < todoList.length; i++) {
-        let list = todoList[i];
-        if(list.important) important.unshift(list) 
-        else if(!list.important) notimportant.push(list);
-      }
-      notimportant.unshift(el);
-      const result = [...important, ...notimportant];
-      console.log(result);
-      return {todoList:result}
-    })
+    if(text){
+      this.setState(({todoList}) => {
+        let newid;
+        if(todoList.length === 0){
+          newid = 1;
+        } else if(todoList.length === 1){
+          newid = 2
+        } else {
+          newid = todoList.length+1;
+        }
+        const el = {
+          label: text,
+          important: false,
+          id: newid
+        }  
+        const important = [];
+        const notimportant =[];
+        
+        for (let i = 0; i < todoList.length; i++) {
+          let list = todoList[i];
+          if(list.important) important.unshift(list) 
+          else if(!list.important) notimportant.push(list);
+        }
+        notimportant.unshift(el);
+        const result = [...important, ...notimportant];
+        localStorage.setItem('todo', JSON.stringify({result}))
+        return {todoList:result}
+      })
+    }
     this.Search('');
   }
 
   Search = (text) => {
+    console.log(text)
     this.setState(({todoListcopy}) => {
       return { todoListcopy: text}
     })
@@ -87,10 +87,11 @@ export default class App extends Component {
       }
       
       const result = [...important, ...notimportant];
-      
+      localStorage.setItem('todo', JSON.stringify(result))
       return {todoList:result}
     })
   }
+  
 
   Searchel(items, todoListcopy) {
     if(todoListcopy.length === 0){

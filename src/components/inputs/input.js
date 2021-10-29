@@ -17,7 +17,8 @@ export default class Input extends Component {
       this.setState({
         label2: e.target.value
       })
-      this.onSubmitwo(e);
+      this.props.onSearch(e.target.value);
+      console.log(e.target.value)
     }
     onSubmit = (e) => {
       e.preventDefault(); //не перезагружает страницу при отправки формы
@@ -31,13 +32,11 @@ export default class Input extends Component {
       this.props.onSearch(this.state.label2);
     }
     render() {
-      const inputext = 'Искать';
-      const inputext2 = 'Добавить';
       return (
         <div>
-          <form type="text" onSubmit={this.onSubmitwo}><input value={this.props.label2} onChange={this.onlablechange2} placeholder={inputext}></input></form>
+          <form type="text" onSubmit={this.onSubmitwo}><input value={this.props.label2} onChange={this.onlablechange2} placeholder='Искать'></input></form>
           <form type="text" onSubmit={this.onSubmit}>
-            <input placeholder={inputext2} onChange={this.onlablechange} value={this.state.label}></input>
+            <input placeholder='Добавить' onChange={this.onlablechange} value={this.state.label}></input>
             <button className="apply"><img src={apply} alt="apply"></img></button>
           </form>
         </div>

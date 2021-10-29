@@ -18,3 +18,9 @@ body {
     box-shadow: 0 0 15px #79B6F2;
     padding: 10px 0;
 }
+
+@media all and (max-width: 650px){
+    .style {
+        width: 90%;
+    }
+}

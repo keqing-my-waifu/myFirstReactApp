@@ -52,7 +52,9 @@ class Todolistitem extends React.Component {
         }
         return (//надо писать this перед названием функции
             <div> 
-                <div className={linethrought} onClick={this.onclickdone} style={ style }>{ label }</div>
+                <div className={linethrought} onClick={this.onclickdone} style={ style }>
+                    <p>{ label }</p>
+                </div>
                 <div className="buttonsdiv">
                     <button className="margin" onClick={onDeleted}><object data={Delete}>b</object></button>
                     
